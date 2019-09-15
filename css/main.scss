@@ -50,7 +50,7 @@ ul {
 .contactholder {
   display: grid;
   grid-column-gap: 1rem;
-  grid-template-columns: 40px auto;
+  grid-template-columns: 40px 40px auto;
   grid-template-rows: 40px;
   align-items: center;
   justify-items: start;
@@ -696,7 +696,7 @@ html {
   }
   .contactholder {
     grid-column-gap: 0.5rem;
-    grid-template-columns: 30px auto;
+    grid-template-columns: 30px 30px auto;
     grid-template-rows: 40px;
   }
 }
