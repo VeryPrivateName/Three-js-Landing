@@ -1,14 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Teko&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 
+// Default remove
+
+a {
+  outline: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Color
+
 :root {
   --primary: #242933;
   --dark: #00000a;
   --colorpaint: #bb060b;
   --white: #f8ffff;
-}
-a {
-  outline: 0;
 }
 .white {
   color: var(--white);
@@ -19,48 +29,9 @@ a {
 .black {
   color: var(--dark);
 }
-* {
-  margin: 0;
-  padding: 0;
-}
-ul {
-  list-style: none;
-}
-.nounder {
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-}
-.pads {
-  padding-bottom: 1rem;
-}
-.gridy {
-  display: grid;
-  grid-row-gap: 1.5rem;
-  grid-column-gap: 1rem;
-  grid-template-columns: 40px auto;
-  grid-template-rows: repeat(6, 50px);
-  align-items: center;
-  justify-items: start;
-  margin-bottom: 3rem;
-}
-.gridy i {
-  justify-self: center;
-}
-.contactholder {
-  display: grid;
-  grid-column-gap: 1rem;
-  grid-template-columns: 40px 40px auto;
-  grid-template-rows: 40px;
-  align-items: center;
-  justify-items: start;
-}
-.contactholder a {
-  justify-self: center;
-}
-.m-sm {
-  padding-bottom: 1rem;
-}
+
+// Loader
+
 .loader {
   position: fixed;
   z-index: 99;
@@ -90,21 +61,80 @@ ul {
   }
 }
 
+// General
+
 body {
   font-family: 'Teko', sans-serif;
-  background: #00000a;
-  color: #f8ffff;
+  background: var(--dark);
+  color: var(--white);
   line-height: 1.6;
   overflow-x: hidden;
 }
+ul {
+  list-style: none;
+}
+.nounder {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
 
-// PLANET TRY
+.container {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
+.pads {
+  padding-bottom: 1rem;
+}
+.m-sm {
+  padding-bottom: 1rem;
+}
+.fa-eye {
+  margin: 1rem;
+}
+
+// NAVBAR
+
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar ul li {
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--white);
+  letter-spacing: 0.3rem;
+}
+
+// PLANET canvas
 #canvas-container {
   position: absolute;
   z-index: -1;
   overflow-x: hidden;
 }
 
+// Animation nav
 .hanim {
   position: relative;
   border: 2px solid transparent;
@@ -192,42 +222,7 @@ body {
   }
 }
 
-.container {
-  visibility: hidden;
-}
-.visible {
-  visibility: visible;
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  width: 100%;
-  height: 60px;
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.navbar ul {
-  display: flex;
-  list-style: none;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.navbar ul li {
-  margin: 0 1rem;
-  padding: 1rem;
-}
-
-.navbar ul li a {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: var(--white);
-  letter-spacing: 0.3rem;
-}
+// Canvas text
 
 .holder {
   background: rgb(0, 0, 0);
@@ -238,7 +233,8 @@ body {
   );
   padding: 2rem 3rem 2rem 4rem;
 }
-/* Section Images */
+// Section
+
 section#home {
   display: grid;
   justify-content: start;
@@ -334,6 +330,35 @@ section#about {
   transform: translate(-95%, -50%);
   opacity: 0.6;
 }
+
+// Contacts
+
+.gridy {
+  display: grid;
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 1rem;
+  grid-template-columns: 40px auto;
+  grid-template-rows: repeat(6, 50px);
+  align-items: center;
+  justify-items: start;
+  margin-bottom: 3rem;
+}
+.gridy i {
+  justify-self: center;
+}
+.contactholder {
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-template-columns: 40px 40px auto;
+  grid-template-rows: 40px;
+  align-items: center;
+  justify-items: start;
+}
+.contactholder a {
+  justify-self: center;
+}
+
+// Dektop Arrow
 
 .chevron {
   position: absolute;
@@ -469,7 +494,9 @@ section#projects {
   vertical-align: middle;
   width: 100%;
 }
-/* Slideshow container */
+
+// Slideshow Container
+
 .slideshow-container {
   position: relative;
   max-width: 700px;
@@ -558,6 +585,8 @@ section#projects {
     opacity: 1;
   }
 }
+
+// MEDIA QUERIES
 
 @media only screen and (max-width: 300px) {
   .prev,
