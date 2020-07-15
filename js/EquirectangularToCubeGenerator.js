@@ -3,11 +3,11 @@
  * @author WestLangley / http://github.com/WestLangley
  */
 
-THREE.CubemapGenerator = function(renderer) {
+THREE.CubemapGenerator = function (renderer) {
   this.renderer = renderer;
 };
 
-THREE.CubemapGenerator.prototype.fromEquirectangular = function(
+THREE.CubemapGenerator.prototype.fromEquirectangular = function (
   texture,
   options
 ) {
@@ -17,7 +17,7 @@ THREE.CubemapGenerator.prototype.fromEquirectangular = function(
 
   var shader = {
     uniforms: {
-      tEquirect: { value: null }
+      tEquirect: { value: null },
     },
 
     vertexShader: `
@@ -62,7 +62,7 @@ THREE.CubemapGenerator.prototype.fromEquirectangular = function(
 				gl_FragColor = texture2D( tEquirect, sampleUV );
 
 			}
-			`
+			`,
   };
 
   var material = new THREE.ShaderMaterial({
@@ -72,7 +72,7 @@ THREE.CubemapGenerator.prototype.fromEquirectangular = function(
     vertexShader: shader.vertexShader,
     fragmentShader: shader.fragmentShader,
     side: THREE.BackSide,
-    blending: THREE.NoBlending
+    blending: THREE.NoBlending,
   });
 
   material.uniforms.tEquirect.value = texture;
@@ -94,7 +94,7 @@ THREE.CubemapGenerator.prototype.fromEquirectangular = function(
     minFilter:
       options.minFilter !== undefined ? options.minFilter : texture.minFilter,
     magFilter:
-      options.magFilter !== undefined ? options.magFilter : texture.magFilter
+      options.magFilter !== undefined ? options.magFilter : texture.magFilter,
   };
 
   var camera = new THREE.CubeCamera(1, 10, resolution, params);
@@ -109,7 +109,7 @@ THREE.CubemapGenerator.prototype.fromEquirectangular = function(
 
 //
 
-THREE.EquirectangularToCubeGenerator = (function() {
+THREE.EquirectangularToCubeGenerator = (function () {
   var camera = new THREE.PerspectiveCamera(90, 1, 0.1, 10);
   var scene = new THREE.Scene();
   var boxMesh = new THREE.Mesh(
@@ -119,7 +119,7 @@ THREE.EquirectangularToCubeGenerator = (function() {
   boxMesh.material.side = THREE.BackSide;
   scene.add(boxMesh);
 
-  var EquirectangularToCubeGenerator = function(sourceTexture, options) {
+  var EquirectangularToCubeGenerator = function (sourceTexture, options) {
     options = options || {};
 
     this.sourceTexture = sourceTexture;
@@ -131,7 +131,7 @@ THREE.EquirectangularToCubeGenerator = (function() {
       { t: [0, 1, 0], u: [0, 0, 1] },
       { t: [0, -1, 0], u: [0, 0, -1] },
       { t: [0, 0, 1], u: [0, -1, 0] },
-      { t: [0, 0, -1], u: [0, -1, 0] }
+      { t: [0, 0, -1], u: [0, -1, 0] },
     ];
 
     var params = {
@@ -141,7 +141,7 @@ THREE.EquirectangularToCubeGenerator = (function() {
       type: options.type || this.sourceTexture.type,
       generateMipmaps: this.sourceTexture.generateMipmaps,
       anisotropy: this.sourceTexture.anisotropy,
-      encoding: this.sourceTexture.encoding
+      encoding: this.sourceTexture.encoding,
     };
 
     this.renderTarget = new THREE.WebGLRenderTargetCube(
@@ -154,7 +154,7 @@ THREE.EquirectangularToCubeGenerator = (function() {
   EquirectangularToCubeGenerator.prototype = {
     constructor: EquirectangularToCubeGenerator,
 
-    update: function(renderer) {
+    update: function (renderer) {
       var currentRenderTarget = renderer.getRenderTarget();
 
       boxMesh.material.uniforms.equirectangularMap.value = this.sourceTexture;
@@ -176,15 +176,15 @@ THREE.EquirectangularToCubeGenerator = (function() {
       return this.renderTarget.texture;
     },
 
-    dispose: function() {
+    dispose: function () {
       this.renderTarget.dispose();
-    }
+    },
   };
 
   function getShader() {
     var shaderMaterial = new THREE.ShaderMaterial({
       uniforms: {
-        equirectangularMap: { value: null }
+        equirectangularMap: { value: null },
       },
 
       vertexShader:
@@ -212,7 +212,7 @@ THREE.EquirectangularToCubeGenerator = (function() {
           gl_FragColor = texture2D(equirectangularMap, uv);\n\
         }',
 
-      blending: THREE.NoBlending
+      blending: THREE.NoBlending,
     });
 
     shaderMaterial.type = 'EquirectangularToCubeGenerator';

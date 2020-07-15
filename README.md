@@ -1,5 +1,5 @@
 # About
 
-Personal portfolio. Find my contacts and other information about my presence in the global WebSpace.
+Landing site design inspired by Space. Created with Three.js library
 
-https://ignas.link/
+https://three-space.netlify.app/

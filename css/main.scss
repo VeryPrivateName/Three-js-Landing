@@ -69,6 +69,7 @@ body {
   color: var(--white);
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 ul {
   list-style: none;
@@ -191,6 +192,7 @@ ul {
   height: 0;
   left: -4px;
   top: -4px;
+  animation: reverse;
 }
 .hanim:hover:after {
   animation: animate2 0.5s linear forwards;
@@ -241,19 +243,6 @@ section#home {
   align-content: center;
   height: 100vh;
 }
-
-section#about {
-  display: grid;
-  grid-template-columns: 0.25fr auto auto 0.25fr;
-  grid-template-rows: 0.06fr 0.06fr auto;
-  grid-template-areas:
-    'line line line line'
-    '.  title2 . .'
-    '. about1 selfy .';
-  grid-gap: 3rem;
-  padding-top: 5rem;
-  background: var(--dark);
-}
 .fontread {
   font-family: 'Fira Sans', sans-serif;
 }
@@ -303,24 +292,6 @@ section#about {
 .padicon {
   padding-right: 0.4rem;
 }
-.abouttext {
-  grid-area: about1;
-  max-width: 700px;
-  justify-self: center;
-  align-self: start;
-  box-sizing: border-box;
-  font-family: 'Fira Sans', sans-serif;
-}
-.manofoto {
-  grid-area: selfy;
-  max-width: 700px;
-  justify-self: center;
-  align-self: start;
-}
-.manofoto img {
-  width: 100%;
-}
-
 .containerSVG {
   width: 34px;
   height: 30px;
@@ -329,33 +300,6 @@ section#about {
   left: 50%;
   transform: translate(-95%, -50%);
   opacity: 0.6;
-}
-
-// Contacts
-
-.gridy {
-  display: grid;
-  grid-row-gap: 1.5rem;
-  grid-column-gap: 1rem;
-  grid-template-columns: 40px auto;
-  grid-template-rows: repeat(6, 50px);
-  align-items: center;
-  justify-items: start;
-  margin-bottom: 3rem;
-}
-.gridy i {
-  justify-self: center;
-}
-.contactholder {
-  display: grid;
-  grid-column-gap: 1rem;
-  grid-template-columns: 40px 40px auto;
-  grid-template-rows: 40px;
-  align-items: center;
-  justify-items: start;
-}
-.contactholder a {
-  justify-self: center;
 }
 
 // Dektop Arrow
@@ -405,159 +349,16 @@ section#about {
   }
   33% {
     opacity: 1;
-    transform: translateY(20px);
+    transform: translateX(20px);
   }
   67% {
     opacity: 1;
-    transform: translateY(30px);
+    transform: translateX(30px);
   }
   100% {
     opacity: 0;
-    transform: translateY(45px) scale3d(0.5, 0.5, 0.5);
+    transform: translateX(45px) scale3d(0.5, 0.5, 0.5);
   }
-}
-// ------------projects
-
-section#projects {
-  display: grid;
-  grid-template-columns: 0.25fr auto auto 0.25fr;
-  grid-template-rows: 0.06fr auto auto;
-  grid-template-areas:
-    '.  title . .'
-    '. pics1 text1 .'
-    '. pics2 text2 .';
-  grid-gap: 3rem;
-  background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 1) 20%,
-      rgba(0, 0, 10, 1) 100%
-    )
-    no-repeat center center/cover;
-  padding-top: 5rem;
-}
-.title1 {
-  grid-area: title;
-  padding-bottom: 3rem;
-  justify-self: start;
-}
-
-.pics1 {
-  grid-area: pics1;
-  justify-self: center;
-  align-self: start;
-  box-sizing: border-box;
-  padding-bottom: 1.8rem;
-}
-
-.text1 {
-  grid-area: text1;
-  display: block;
-  justify-self: center;
-  align-self: start;
-  padding-bottom: 2rem;
-  font-family: 'Fira Sans', sans-serif;
-  max-width: 750px;
-}
-.pics2 {
-  grid-area: pics2;
-  justify-self: center;
-  align-self: start;
-  box-sizing: border-box;
-}
-
-.text2 {
-  grid-area: text2;
-  display: block;
-  justify-self: center;
-  align-self: start;
-  font-family: 'Fira Sans', sans-serif;
-  max-width: 750px;
-}
-
-.mySlides {
-  display: none;
-  object-fit: cover;
-  max-width: 700px;
-  padding-bottom: 1rem;
-}
-.mySlides img {
-  vertical-align: middle;
-  width: 100%;
-}
-.mySlides2 {
-  display: none;
-  object-fit: cover;
-  max-width: 700px;
-  padding-bottom: 1rem;
-}
-.mySlides2 img {
-  vertical-align: middle;
-  width: 100%;
-}
-
-// Slideshow Container
-
-.slideshow-container {
-  position: relative;
-  max-width: 700px;
-  padding-top: 0.75rem;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -36px;
-  color: var(--white);
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  opacity: 0.5;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: rgb(214, 214, 214);
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.4s ease;
-}
-.dot2 {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: rgb(214, 214, 214);
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.4s ease;
-}
-.active,
-.dot:hover {
-  background-color: #717171;
 }
 
 /* Fading animation */
@@ -678,55 +479,8 @@ html {
   .pad1 {
     padding: 0.5rem;
   }
-  section#projects {
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas:
-      'title'
-      'text1'
-      'pics1'
-      'text2'
-      'pics2';
-    grid-gap: 1rem;
-    padding-top: 5rem;
-  }
-  section#about {
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas:
-      'line'
-      'title2'
-      'about1'
-      'selfy';
-    grid-gap: 1rem;
-  }
-  .pics1 {
-    padding: 1.5rem;
-  }
-  .text1 {
-    padding: 1.5rem;
-  }
-  .pics2 {
-    padding: 1.5rem;
-  }
-  .text2 {
-    padding: 1.5rem;
-  }
-  .abouttext {
-    margin: 1.5rem;
-  }
   .laikiklisimg {
     padding: 1.5rem;
-  }
-  .gridy {
-    grid-column-gap: 0.5rem;
-    grid-template-columns: 30px auto;
-    grid-template-rows: repeat(6, 40px);
-  }
-  .contactholder {
-    grid-column-gap: 0.5rem;
-    grid-template-columns: 30px 30px auto;
-    grid-template-rows: 40px;
   }
 }
 @media screen and (max-width: 620px) {

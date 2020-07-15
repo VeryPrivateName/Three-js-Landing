@@ -17,9 +17,7 @@ var phi = 0,
 var identidad = document.createElement('INPUT');
 var textureLoader = new THREE.TextureLoader();
 
-textureLoader.load('4096x2048constellationCMPR.jpg', function (
-  texture
-) {
+textureLoader.load('4096x2048constellationCMPR.jpg', function (texture) {
   texture.mapping = THREE.UVMapping;
 
   init(texture);
@@ -46,7 +44,7 @@ function init(texture) {
     resolution: 1024,
     generateMipmaps: true,
     minFilter: THREE.LinearMipMapLinearFilter,
-    magFilter: THREE.LinearFilter
+    magFilter: THREE.LinearFilter,
   };
 
   scene.background = new THREE.CubemapGenerator(renderer).fromEquirectangular(
@@ -69,7 +67,7 @@ function init(texture) {
   //
 
   material = new THREE.MeshBasicMaterial({
-    envMap: cubeCamera2.renderTarget.texture
+    envMap: cubeCamera2.renderTarget.texture,
   });
 
   sphere = new THREE.Mesh(new THREE.IcosahedronBufferGeometry(25, 3), material);
@@ -96,7 +94,7 @@ function onWindowResized() {
 }
 
 function onDocumentMouseDown(event) {
-
+  event.preventDefault();
   onPointerDownPointerX = event.clientX;
   onPointerDownPointerY = event.clientY;
 
